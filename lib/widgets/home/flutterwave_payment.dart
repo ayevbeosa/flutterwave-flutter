@@ -41,283 +41,278 @@ class _FlutterwaveUIState extends State<FlutterwaveUI> {
       home: Scaffold(
         key: this._scaffoldKey,
         body: SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height,
-            ),
-            child: SafeArea(
-              child: Container(
-                width: double.infinity,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(10, 50, 10, 70),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                Icons.lock,
-                                size: 10.0,
-                                color: Colors.black,
-                              ),
-                              SizedBox(
-                                width: 5.0,
-                              ),
-                              Text(
-                                "SECURED BY FLUTTERWAVE",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 10.0,
-                                    fontFamily: "FLW",
-                                    letterSpacing: 1.0),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            width: double.infinity,
-                            height: 100,
-                          ),
-                          Container(
-                            width: double.infinity,
-                            margin: EdgeInsets.fromLTRB(0, 100, 0, 0),
-                            child: Text(
-                              "How would you \nlike to pay?",
-                              textAlign: TextAlign.left,
+          child: SafeArea(
+            child: Container(
+              width: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10, 50, 10, 70),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Icon(
+                              Icons.lock,
+                              size: 10.0,
+                              color: Colors.black,
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            Text(
+                              "SECURED BY FLUTTERWAVE",
                               style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                                fontFamily: "FLW",
-                                fontSize: 30.0,
-                              ),
+                                  color: Colors.black,
+                                  fontSize: 10.0,
+                                  fontFamily: "FLW",
+                                  letterSpacing: 1.0),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 100,
+                        ),
+                        Container(
+                          width: double.infinity,
+                          margin: EdgeInsets.fromLTRB(0, 100, 0, 0),
+                          child: Text(
+                            "How would you \nlike to pay?",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontFamily: "FLW",
+                              fontSize: 30.0,
                             ),
                           ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Container(
-                              height: 5,
-                              width: 200,
-                              color: Colors.pink,
-                              margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
-                            ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            height: 5,
+                            width: 200,
+                            color: Colors.pink,
+                            margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    Container(
-                      color: Colors.white38,
-                      width: double.infinity,
-                      child: Column(
-                        children: [
-                          Visibility(
-                            visible: paymentManager.acceptAccountPayment,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  width: double.infinity,
-                                  height: 50.0,
-                                  child: FlutterwavePaymentOption(
-                                    handleClick: this._launchPayWithAccountWidget,
-                                    buttonText: "Account",
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 0.5,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Visibility(
-                            visible: paymentManager.acceptCardPayment,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  width: double.infinity,
-                                  height: 50.0,
-                                  child: FlutterwavePaymentOption(
-                                    handleClick: this._launchCardPaymentWidget,
-                                    buttonText: "Card",
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 0.5,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Visibility(
-                            visible: paymentManager.acceptUSSDPayment,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 50.0,
-                                  child: FlutterwavePaymentOption(
-                                    handleClick: this._launchUSSDPaymentWidget,
-                                    buttonText: "USSD",
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 0.5,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Visibility(
-                            visible: paymentManager.acceptBankTransferPayment,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 50.0,
-                                  child: FlutterwavePaymentOption(
-                                    handleClick:
-                                    this._launchBankTransferPaymentWidget,
-                                    buttonText: "Bank Transfer",
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 0.5,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Visibility(
-                            visible: paymentManager.acceptMpesaPayment,
-                            child: Column(children: [
+                  ),
+                  Container(
+                    color: Colors.white38,
+                    width: double.infinity,
+                    child: Column(
+                      children: [
+                        Visibility(
+                          visible: paymentManager.acceptAccountPayment,
+                          child: Column(
+                            children: [
                               SizedBox(
+                                width: double.infinity,
                                 height: 50.0,
                                 child: FlutterwavePaymentOption(
-                                  handleClick: this._launchMpesaPaymentWidget,
-                                  buttonText: "Mpesa",
+                                  handleClick: this._launchPayWithAccountWidget,
+                                  buttonText: "Account",
                                 ),
                               ),
                               SizedBox(
                                 height: 0.5,
                               ),
-                            ]),
+                            ],
                           ),
-                          Visibility(
-                            visible: paymentManager.acceptRwandaMoneyPayment,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 50.0,
-                                  child: FlutterwavePaymentOption(
-                                    handleClick:
-                                    this._launchMobileMoneyPaymentWidget,
-                                    buttonText: "Rwanda Mobile Money",
-                                  ),
+                        ),
+                        Visibility(
+                          visible: paymentManager.acceptCardPayment,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                width: double.infinity,
+                                height: 50.0,
+                                child: FlutterwavePaymentOption(
+                                  handleClick: this._launchCardPaymentWidget,
+                                  buttonText: "Card",
                                 ),
-                                SizedBox(
-                                  height: 0.5,
-                                ),
-                              ],
-                            ),
+                              ),
+                              SizedBox(
+                                height: 0.5,
+                              ),
+                            ],
                           ),
-                          Visibility(
-                            visible: paymentManager.acceptGhanaPayment,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 50.0,
-                                  child: FlutterwavePaymentOption(
-                                    handleClick:
-                                    this._launchMobileMoneyPaymentWidget,
-                                    buttonText: "Ghana Mobile Money",
-                                  ),
+                        ),
+                        Visibility(
+                          visible: paymentManager.acceptUSSDPayment,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 50.0,
+                                child: FlutterwavePaymentOption(
+                                  handleClick: this._launchUSSDPaymentWidget,
+                                  buttonText: "USSD",
                                 ),
-                                SizedBox(
-                                  height: 0.5,
-                                ),
-                              ],
-                            ),
+                              ),
+                              SizedBox(
+                                height: 0.5,
+                              ),
+                            ],
                           ),
-                          Visibility(
-                            visible: paymentManager.acceptUgandaPayment,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 50.0,
-                                  child: FlutterwavePaymentOption(
-                                    handleClick:
-                                    this._launchMobileMoneyPaymentWidget,
-                                    buttonText: "Uganda Mobile Money",
-                                  ),
+                        ),
+                        Visibility(
+                          visible: paymentManager.acceptBankTransferPayment,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 50.0,
+                                child: FlutterwavePaymentOption(
+                                  handleClick:
+                                      this._launchBankTransferPaymentWidget,
+                                  buttonText: "Bank Transfer",
                                 ),
-                                SizedBox(
-                                  height: 0.5,
-                                ),
-                              ],
-                            ),
+                              ),
+                              SizedBox(
+                                height: 0.5,
+                              ),
+                            ],
                           ),
-                          Visibility(
-                            visible: paymentManager.acceptZambiaPayment,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 50.0,
-                                  child: FlutterwavePaymentOption(
-                                    handleClick:
-                                    this._launchMobileMoneyPaymentWidget,
-                                    buttonText: "Zambia Mobile Money",
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 0.5,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Visibility(
-                            visible: false,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 50.0,
-                                  child: FlutterwavePaymentOption(
-                                    handleClick: () => {},
-                                    buttonText: "Barter",
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 0.5,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Visibility(
-                            visible: paymentManager.acceptVoucherPayment,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 50.0,
-                                  child: FlutterwavePaymentOption(
-                                    handleClick: this._launchVoucherPaymentWidget,
-                                    buttonText: "Voucher",
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 0.5,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Visibility(
-                            visible: paymentManager.acceptFancophoneMobileMoney,
-                            child: SizedBox(
+                        ),
+                        Visibility(
+                          visible: paymentManager.acceptMpesaPayment,
+                          child: Column(children: [
+                            SizedBox(
                               height: 50.0,
                               child: FlutterwavePaymentOption(
-                                handleClick: this._launchMobileMoneyPaymentWidget,
-                                buttonText: "Francophone Mobile Money",
+                                handleClick: this._launchMpesaPaymentWidget,
+                                buttonText: "Mpesa",
                               ),
                             ),
-                          )
-                        ],
-                      ),
+                            SizedBox(
+                              height: 0.5,
+                            ),
+                          ]),
+                        ),
+                        Visibility(
+                          visible: paymentManager.acceptRwandaMoneyPayment,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 50.0,
+                                child: FlutterwavePaymentOption(
+                                  handleClick:
+                                      this._launchMobileMoneyPaymentWidget,
+                                  buttonText: "Rwanda Mobile Money",
+                                ),
+                              ),
+                              SizedBox(
+                                height: 0.5,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Visibility(
+                          visible: paymentManager.acceptGhanaPayment,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 50.0,
+                                child: FlutterwavePaymentOption(
+                                  handleClick:
+                                      this._launchMobileMoneyPaymentWidget,
+                                  buttonText: "Ghana Mobile Money",
+                                ),
+                              ),
+                              SizedBox(
+                                height: 0.5,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Visibility(
+                          visible: paymentManager.acceptUgandaPayment,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 50.0,
+                                child: FlutterwavePaymentOption(
+                                  handleClick:
+                                      this._launchMobileMoneyPaymentWidget,
+                                  buttonText: "Uganda Mobile Money",
+                                ),
+                              ),
+                              SizedBox(
+                                height: 0.5,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Visibility(
+                          visible: paymentManager.acceptZambiaPayment,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 50.0,
+                                child: FlutterwavePaymentOption(
+                                  handleClick:
+                                      this._launchMobileMoneyPaymentWidget,
+                                  buttonText: "Zambia Mobile Money",
+                                ),
+                              ),
+                              SizedBox(
+                                height: 0.5,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Visibility(
+                          visible: false,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 50.0,
+                                child: FlutterwavePaymentOption(
+                                  handleClick: () => {},
+                                  buttonText: "Barter",
+                                ),
+                              ),
+                              SizedBox(
+                                height: 0.5,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Visibility(
+                          visible: paymentManager.acceptVoucherPayment,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 50.0,
+                                child: FlutterwavePaymentOption(
+                                  handleClick: this._launchVoucherPaymentWidget,
+                                  buttonText: "Voucher",
+                                ),
+                              ),
+                              SizedBox(
+                                height: 0.5,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Visibility(
+                          visible: paymentManager.acceptFancophoneMobileMoney,
+                          child: SizedBox(
+                            height: 50.0,
+                            child: FlutterwavePaymentOption(
+                              handleClick: this._launchMobileMoneyPaymentWidget,
+                              buttonText: "Francophone Mobile Money",
+                            ),
+                          ),
+                        )
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -395,11 +390,12 @@ class _FlutterwaveUIState extends State<FlutterwaveUI> {
 
   void _launchBankTransferPaymentWidget() async {
     final BankTransferPaymentManager bankTransferPaymentManager =
-    this.widget._flutterwavePaymentManager.getBankTransferPaymentManager();
+        this.widget._flutterwavePaymentManager.getBankTransferPaymentManager();
     final response = await Navigator.push(
       this.context,
       MaterialPageRoute(
-          builder: (context) => PayWithBankTransfer(bankTransferPaymentManager)),
+          builder: (context) =>
+              PayWithBankTransfer(bankTransferPaymentManager)),
     );
     _handleBackPress(response);
   }
@@ -415,7 +411,7 @@ class _FlutterwaveUIState extends State<FlutterwaveUI> {
   }
 
   void _handleBackPress(dynamic result) {
-    if (result == null || result is ChargeResponse){
+    if (result == null || result is ChargeResponse) {
       final ChargeResponse? chargeResponse = result as ChargeResponse;
       String message;
       if (chargeResponse != null) {
